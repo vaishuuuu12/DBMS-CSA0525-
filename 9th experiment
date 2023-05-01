@@ -1,0 +1,44 @@
+mysql> use saveetha;
+Database changed
+mysql> select*from mentees;
++-----------+---------+------+--------+------------+---------+-------+
+| Regno     | Name    | Dept | Adress | Fathername | subject | marks |
++-----------+---------+------+--------+------------+---------+-------+
+| 192224039 | Lavanya | IT   | Ongole | srinu      | NULL    |    95 |
+| 192224050 | Deepu   | CSE  | Ongole | Kalyan     | DBMS    |    91 |
+| 192224051 | Pandu   | CSE  | Kpd    | Murali     | DBMS    |    99 |
++-----------+---------+------+--------+------------+---------+-------+
+3 rows in set (0.01 sec)
+
+mysql> create table sdept values(1,"CSE",192224039);
+mysql> create table sdept(Deptid int(5),Deptname varchar(20),Rollno int(10));
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> insert into sdept values(1,"CSE",192224039);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into sdept values(2,"IT",192224032);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into sdept values(3,"EEE",192224050);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into sdept values(3,"ECE",192224050);
+Query OK, 1 row affected (0.01 sec 
+
+mysql> update sdept set Deptid=4 where Rollno=192224050;
+Query OK, 2 rows affected (0.01 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql> select*from sdept;
++--------+----------+-----------+
+| Deptid | Deptname | Rollno    |
++--------+----------+-----------+
+|      1 | CSE      | 192224039 |
+|      2 | IT       | 192224032 |
+|      4 | EEE      | 192224050 |
+|      4 | ECE      | 192224050 |
++--------+----------+-----------+
+4 rows in set (0.00 sec)
+
+mysql>
