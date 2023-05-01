@@ -1,0 +1,61 @@
+mysql> use saveetha;
+Database changed
+mysql> show tables;
++--------------------+
+| Tables_in_saveetha |
++--------------------+
+| empdept            |
+| employees          |
+| mentees            |
+| mentees1           |
+| students           |
+| studepartment      |
++--------------------+
+6 rows in set (0.00 sec)
+
+mysql> select*from mentees;
++-----------+---------+------+--------+------------+---------+-------+
+| Regno     | Name    | Dept | Adress | Fathername | subject | marks |
++-----------+---------+------+--------+------------+---------+-------+
+| 192224039 | Lavanya | IT   | Ongole | srinu      | NULL    |    95 |
+| 192224050 | Deepu   | CSE  | Ongole | Kalyan     | DBMS    |    91 |
+| 192224051 | Pandu   | CSE  | Kpd    | Murali     | DBMS    |    99 |
++-----------+---------+------+--------+------------+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> select Regno,Name from mentees where Name IN(select Name from mentees where Dept="CSE");
++-----------+-------+
+| Regno     | Name  |
++-----------+-------+
+| 192224050 | Deepu |
+| 192224051 | Pandu |
++-----------+-------+
+2 rows in set (0.00 sec)
+
+mysql> create table mentee(ID int(10),Name varchar(20));
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> insert into mentee(Id,Name)
+    -> select Regno,Name
+    -> from mentees where Dept="CSE";
+Query OK, 2 rows affected (0.00 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> select*from mentee;
++-----------+-------+
+| ID        | Name  |
++-----------+-------+
+| 192224050 | Deepu |
+| 192224051 | Pandu |
++-----------+-------+
+2 rows in set (0.00 sec)
+
+mysql> select Regno,(select Name from mentee where Id=192224039)as Name,Dept,Adress,Fathername,Marks,subject from mentees where Regno=192224039;
++-----------+------+------+--------+------------+-------+---------+
+| Regno     | Name | Dept | Adress | Fathername | Marks | subject |
++-----------+------+------+--------+------------+-------+---------+
+| 192224039 | NULL | IT   | Ongole | srinu      |    95 | NULL    |
++-----------+------+------+--------+------------+-------+---------+
+1 row in set (0.00 sec)
+
+mysql>
