@@ -1,0 +1,69 @@
+ use saveetha;
+Database changed
+mysql> show tables;
++--------------------+
+| Tables_in_saveetha |
++--------------------+
+| empdept            |
+| employees          |
+| mentees            |
+| students           |
+| studepartment      |
++--------------------+
+5 rows in set (0.00 sec)
+
+mysql> select*from mentees;
++-----------+---------+------+--------+------------+---------+-------+
+| Regno     | Name    | Dept | Adress | Fathername | subject | marks |
++-----------+---------+------+--------+------------+---------+-------+
+| 192224039 | Lavanya | IT   | Ongole | srinu      | NULL    |    95 |
+| 192224050 | Deepu   | CSE  | Ongole | Kalyan     | DBMS    |    91 |
+| 192224051 | Pandu   | CSE  | Kpd    | Murali     | DBMS    |    99 |
++-----------+---------+------+--------+------------+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> select*from mentees order by Name;
++-----------+---------+------+--------+------------+---------+-------+
+| Regno     | Name    | Dept | Adress | Fathername | subject | marks |
++-----------+---------+------+--------+------------+---------+-------+
+| 192224050 | Deepu   | CSE  | Ongole | Kalyan     | DBMS    |    91 |
+| 192224039 | Lavanya | IT   | Ongole | srinu      | NULL    |    95 |
+| 192224051 | Pandu   | CSE  | Kpd    | Murali     | DBMS    |    99 |
++-----------+---------+------+--------+------------+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> select*from mentees group by Dept;
++-----------+---------+------+--------+------------+---------+-------+
+| Regno     | Name    | Dept | Adress | Fathername | subject | marks |
++-----------+---------+------+--------+------------+---------+-------+
+| 192224050 | Deepu   | CSE  | Ongole | Kalyan     | DBMS    |    91 |
+| 192224039 | Lavanya | IT   | Ongole | srinu      | NULL    |    95 |
++-----------+---------+------+--------+------------+---------+-------+
+2 rows in set (0.06 sec)
+
+mysql> select*from mentees group by Marks;
++-----------+---------+------+--------+------------+---------+-------+
+| Regno     | Name    | Dept | Adress | Fathername | subject | marks |
++-----------+---------+------+--------+------------+---------+-------+
+| 192224050 | Deepu   | CSE  | Ongole | Kalyan     | DBMS    |    91 |
+| 192224039 | Lavanya | IT   | Ongole | srinu      | NULL    |    95 |
+| 192224051 | Pandu   | CSE  | Kpd    | Murali     | DBMS    |    99 |
++-----------+---------+------+--------+------------+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> select*from mentees group by Dept;
++-----------+---------+------+--------+------------+---------+-------+
+| Regno     | Name    | Dept | Adress | Fathername | subject | marks |
++-----------+---------+------+--------+------------+---------+-------+
+| 192224050 | Deepu   | CSE  | Ongole | Kalyan     | DBMS    |    91 |
+| 192224039 | Lavanya | IT   | Ongole | srinu      | NULL    |    95 |
++-----------+---------+------+--------+------------+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> select*from mentees having Marks>95;
++-----------+-------+------+--------+------------+---------+-------+
+| Regno     | Name  | Dept | Adress | Fathername | subject | marks |
++-----------+-------+------+--------+------------+---------+-------+
+| 192224051 | Pandu | CSE  | Kpd    | Murali     | DBMS    |    99 |
++-----------+-------+------+--------+------------+---------+-------+
+1 row in set (0.00 sec)
