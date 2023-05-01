@@ -1,0 +1,103 @@
+mysql> select*from mentees;
++-----------+-----------+------+---------+------------+
+| Regno     | Name      | Dept | Address | Fathername |
++-----------+-----------+------+---------+------------+
+| 192224050 | Deepshika | IT   | Ongole  | Kalyan     |
+| 192224039 | Lavanya   | CSE  | Ongole  | Srinivas   |
+| 192222019 | Dharika   | Bio  | Hyd     | Uncle      |
+| 192224032 | Harini    | CSE  | BZA     | Uncle      |
++-----------+-----------+------+---------+------------+
+4 rows in set (0.00 sec)
+
+mysql> select*from mentees where Dept='CSE';
++-----------+---------+------+---------+------------+
+| Regno     | Name    | Dept | Address | Fathername |
++-----------+---------+------+---------+------------+
+| 192224039 | Lavanya | CSE  | Ongole  | Srinivas   |
+| 192224032 | Harini  | CSE  | BZA     | Uncle      |
++-----------+---------+------+---------+------------+
+2 rows in set (0.00 sec)
+
+mysql> select*from mentees where Name="Deepshika";
++-----------+-----------+------+---------+------------+
+| Regno     | Name      | Dept | Address | Fathername |
++-----------+-----------+------+---------+------------+
+| 192224050 | Deepshika | IT   | Ongole  | Kalyan     |
++-----------+-----------+------+---------+------------+
+1 row in set (0.00 sec)
+
+mysql> alter table mentees add Marks int(3);
+Query OK, 4 rows affected (0.02 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> update mentees set Marks=99 where Dept="CSE";
+Query OK, 2 rows affected (0.01 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql> update mentees set Marks=91 where Dept="IT";
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update mentees set marks=91 where Name="Deepshika";
+Query OK, 0 rows affected (0.02 sec)
+Rows matched: 1  Changed: 0  Warnings: 0
+
+mysql> update mentees set Marks=95 where Name="Harini";
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update mentees set Marks=80 where Name="Dharika";
+Query OK, 1 row affected (0.02 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select*from mentees;
++-----------+-----------+------+---------+------------+-------+
+| Regno     | Name      | Dept | Address | Fathername | Marks |
++-----------+-----------+------+---------+------------+-------+
+| 192224050 | Deepshika | IT   | Ongole  | Kalyan     |    91 |
+| 192224039 | Lavanya   | CSE  | Ongole  | Srinivas   |    99 |
+| 192222019 | Dharika   | Bio  | Hyd     | Uncle      |    80 |
+| 192224032 | Harini    | CSE  | BZA     | Uncle      |    95 |
++-----------+-----------+------+---------+------------+-------+
+4 rows in set (0.00 sec)
+
+mysql> select*from mentees where Name like 'D%';
+ERROR 1046 (3D000): No database selected
+mysql> use saveetha;
+Database changed
+mysql> select*from mentees where Name like 'D%';
++-----------+-----------+------+---------+------------+-------+
+| Regno     | Name      | Dept | Address | Fathername | Marks |
++-----------+-----------+------+---------+------------+-------+
+| 192224050 | Deepshika | IT   | Ongole  | Kalyan     |    91 |
+| 192222019 | Dharika   | Bio  | Hyd     | Uncle      |    80 |
++-----------+-----------+------+---------+------------+-------+
+2 rows in set (0.00 sec)
+
+mysql> select*from mentees where Dept like '%B%';
++-----------+---------+------+---------+------------+-------+
+| Regno     | Name    | Dept | Address | Fathername | Marks |
++-----------+---------+------+---------+------------+-------+
+| 192222019 | Dharika | Bio  | Hyd     | Uncle      |    80 |
++-----------+---------+------+---------+------------+-------+
+1 row in set (0.00 sec)
+
+mysql> select*from mentees where Address like '%O';
+Empty set (0.00 sec)
+
+mysql> select*from mentees where Address like 'O%';
++-----------+-----------+------+---------+------------+-------+
+| Regno     | Name      | Dept | Address | Fathername | Marks |
++-----------+-----------+------+---------+------------+-------+
+| 192224050 | Deepshika | IT   | Ongole  | Kalyan     |    91 |
+| 192224039 | Lavanya   | CSE  | Ongole  | Srinivas   |    99 |
++-----------+-----------+------+---------+------------+-------+
+2 rows in set (0.00 sec)
+
+mysql> select*from mentees where Address like 'H_d';
++-----------+---------+------+---------+------------+-------+
+| Regno     | Name    | Dept | Address | Fathername | Marks |
++-----------+---------+------+---------+------------+-------+
+| 192222019 | Dharika | Bio  | Hyd     | Uncle      |    80 |
++-----------+---------+------+---------+------------+-------+
+1 row in set (0.00 sec)
