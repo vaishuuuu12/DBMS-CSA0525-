@@ -1,0 +1,101 @@
+Enter password: ******
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 15
+Server version: 8.0.33 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> create database student1;
+ERROR 1007 (HY000): Can't create database 'student1'; database exists
+mysql> create database student2;
+Query OK, 1 row affected (0.96 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sri                |
+| student1           |
+| student2           |
+| sys                |
+| vaishu             |
++--------------------+
+8 rows in set (0.00 sec)
+
+mysql> use student2;
+Database changed
+mysql> create table student2(regno int(10),name char(20),gender char(10),DOB int(10),mobileno int(10),city char(20));
+Query OK, 0 rows affected, 3 warnings (1.03 sec)
+
+mysql> desc student2;
++----------+----------+------+-----+---------+-------+
+| Field    | Type     | Null | Key | Default | Extra |
++----------+----------+------+-----+---------+-------+
+| regno    | int      | YES  |     | NULL    |       |
+| name     | char(20) | YES  |     | NULL    |       |
+| gender   | char(10) | YES  |     | NULL    |       |
+| DOB      | int      | YES  |     | NULL    |       |
+| mobileno | int      | YES  |     | NULL    |       |
+| city     | char(20) | YES  |     | NULL    |       |
++----------+----------+------+-----+---------+-------+
+6 rows in set (0.01 sec)
+
+mysql> create table department(deptNo int(10),deptname char(20),depthead char(10));
+Query OK, 0 rows affected, 1 warning (0.51 sec)
+
+mysql> desc department;
++----------+----------+------+-----+---------+-------+
+| Field    | Type     | Null | Key | Default | Extra |
++----------+----------+------+-----+---------+-------+
+| deptNo   | int      | YES  |     | NULL    |       |
+| deptname | char(20) | YES  |     | NULL    |       |
+| depthead | char(10) | YES  |     | NULL    |       |
++----------+----------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+mysql> create table course(courseNo int(10),coursedesc char(20),coursetype char(10),semno int(10),hallno int(10),facno int(10));
+Query OK, 0 rows affected, 4 warnings (0.87 sec)
+
+mysql> desc course;
++------------+----------+------+-----+---------+-------+
+| Field      | Type     | Null | Key | Default | Extra |
++------------+----------+------+-----+---------+-------+
+| courseNo   | int      | YES  |     | NULL    |       |
+| coursedesc | char(20) | YES  |     | NULL    |       |
+| coursetype | char(10) | YES  |     | NULL    |       |
+| semno      | int      | YES  |     | NULL    |       |
+| hallno     | int      | YES  |     | NULL    |       |
+| facno      | int      | YES  |     | NULL    |       |
++------------+----------+------+-----+---------+-------+
+6 rows in set (0.01 sec)
+
+mysql> alter table faculty1 add dept char(10);
+ERROR 1146 (42S02): Table 'student2.faculty1' doesn't exist
+mysql> alter table student2 add dept char(10);
+Query OK, 0 rows affected (1.43 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc student2;
++----------+----------+------+-----+---------+-------+
+| Field    | Type     | Null | Key | Default | Extra |
++----------+----------+------+-----+---------+-------+
+| regno    | int      | YES  |     | NULL    |       |
+| name     | char(20) | YES  |     | NULL    |       |
+| gender   | char(10) | YES  |     | NULL    |       |
+| DOB      | int      | YES  |     | NULL    |       |
+| mobileno | int      | YES  |     | NULL    |       |
+| city     | char(20) | YES  |     | NULL    |       |
+| dept     | char(10) | YES  |     | NULL    |       |
++----------+----------+------+-----+---------+-------+
+7 rows in set (0.00 sec)
+
+mysql> 
