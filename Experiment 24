@@ -1,0 +1,77 @@
+mysql> select*from Room_accomodation;
+
++---------+----------+------------+
+
+| Room_no | Floor_no | No_of_Beds |
+
++---------+----------+------------+
+
+|     100 |        1 |          3 |
+
+|     101 |        1 |          2 |
+
+|     201 |        2 |          2 |
+
+|     301 |        3 |          3 |
+
++---------+----------+------------+
+
+4 rows in set (0.00 sec)
+
+mysql> alter table Room_accomodation add Cost_per_Day int(4);
+
+Query OK, 0 rows affected, 1 warning (0.02 sec)
+
+Records: 0  Duplicates: 0  Warnings: 1
+
+mysql> update Room_accomodation set Cost_per_Day=1000 where Floor_no=1;
+
+Query OK, 2 rows affected (0.01 sec)
+
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql> update Room_accomodation set Cost_per_Day=500 where Floor_no=2;
+
+Query OK, 1 row affected (0.01 sec)
+
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update Room_accomodation set Cost_per_Day=1500 where Floor_no=3;
+
+Query OK, 1 row affected (0.01 sec)
+
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select*from Room_accomodation;
+
++---------+----------+------------+--------------+
+
+| Room_no | Floor_no | No_of_Beds | Cost_per_Day |
+
++---------+----------+------------+--------------+
+
+|     100 |        1 |          3 |         1000 |
+
+|     101 |        1 |          2 |         1000 |
+
+|     201 |        2 |          2 |          500 |
+
+|     301 |        3 |          3 |         1500 |
+
++---------+----------+------------+--------------+
+
+4 rows in set (0.00 sec)
+
+mysql> select No_of_Beds from Room_accomodation where Room_no=100;
+
++------------+
+
+| No_of_Beds |
+
++------------+
+
+|          3 |
+
++------------+
+
+1 row in set (0.00 sec)
